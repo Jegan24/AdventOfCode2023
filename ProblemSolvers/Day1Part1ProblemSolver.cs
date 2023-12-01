@@ -7,6 +7,7 @@
         {
             var lines = input.Split("\n").Where(line => !string.IsNullOrEmpty(line)).ToArray();
             int sum = 0;
+
             foreach (var line in lines)
             {
                 sum += GetValue(line);

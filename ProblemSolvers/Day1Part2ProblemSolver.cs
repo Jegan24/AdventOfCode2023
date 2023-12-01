@@ -36,7 +36,10 @@
                 return input;
             }
 
-            var wordToReplace = wordReplacements.Where(word => input.Contains(word.Key)).OrderBy(word => input.IndexOf(word.Key)).First();
+            var wordToReplace = wordReplacements
+                                .Where(word => input.Contains(word.Key))
+                                .OrderBy(word => input.IndexOf(word.Key))
+                                .First();
 
             return Clean(input.Replace(wordToReplace.Key, wordToReplace.Value));
         }
