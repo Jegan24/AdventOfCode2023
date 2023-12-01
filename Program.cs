@@ -37,24 +37,24 @@ namespace AdventOfCode2023
         
         private static IEnumerable<IProblemSolver> GetProblemSolvers()
         {            
-            var problemSolverCandidates = 
+            var problemSolvers = 
                 Assembly
                 .GetExecutingAssembly()
                 .GetTypes()
                     .Where(t => t.GetInterfaces().Contains(typeof(IProblemSolver)));
 
-            var problemSolvers = new List<IProblemSolver>();
+            var output = new List<IProblemSolver>();
 
-            foreach(var problemSolverCandidate in problemSolverCandidates)
+            foreach(var problemSolver in problemSolvers)
             {
-                var problemSolver = (IProblemSolver?)Activator.CreateInstance(problemSolverCandidate);
-                if(problemSolver is not null)
+                var instance = (IProblemSolver?)Activator.CreateInstance(problemSolver);
+                if(instance is not null)
                 {
-                    problemSolvers.Add(problemSolver);
+                    output.Add(instance);
                 }
             }
 
-            return problemSolvers;
+            return output;
         }
     }
 }
