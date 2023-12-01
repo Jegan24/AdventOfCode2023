@@ -28,7 +28,7 @@ namespace AdventOfCode2023
 
             foreach(var fullFileName in fileNames)
             {
-                var fileName = fullFileName.Split('\\').Last().Split('.').First();
+                var fileName = fullFileName.Split('\\').Last();
                 output[fileName] = File.ReadAllText(fullFileName);
             }
 
